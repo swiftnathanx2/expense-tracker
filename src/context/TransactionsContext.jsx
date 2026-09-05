@@ -4,11 +4,11 @@ import defaultCategories from "../data/categories";
 
 export const TransactionsContext = createContext(null);
 
-export function TransactionProvider({ children }) {
-  const [transactions, setTransactions] = useLocalStorage(transactions, []);
+export function TransactionsProvider({ children }) {
+  const [transactions, setTransactions] = useLocalStorage("transactions", []);
 
   const [customCategories, setCustomCategories] = useLocalStorage(
-    customCategories,
+    "customCategories",
     [],
   );
 
@@ -36,11 +36,12 @@ export function TransactionProvider({ children }) {
     setTransactions((prev) => prev.filter((t) => t.id !== id));
   };
 
-  const categories = [...defaultCategoriesData, ...customCategories];
+  const categories = [...defaultCategories, ...customCategories];
 
   const value = {
     transactions,
     categories,
+    customCategories,
     setCustomCategories,
     editId,
     setEditId,
@@ -50,11 +51,11 @@ export function TransactionProvider({ children }) {
     deleteTransaction,
   };
 
-  return;
-
-  <div>
-    <TransactionsContext.Provider value={value}>
-      {children}
-    </TransactionsContext.Provider>
-  </div>;
+  return (
+    <div>
+      <TransactionsContext.Provider value={value}>
+        {children}
+      </TransactionsContext.Provider>
+    </div>
+  );
 }
