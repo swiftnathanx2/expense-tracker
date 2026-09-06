@@ -36,6 +36,17 @@ export function TransactionsProvider({ children }) {
     setTransactions((prev) => prev.filter((t) => t.id !== id));
   };
 
+  const addCustomCategory = (categoryData) => {
+    setCustomCategories((prev) => [
+      { id: crypto.randomUUID(), ...categoryData },
+      ...prev,
+    ]);
+  };
+
+  const deleteCustomCategory = (id) => {
+    setCustomCategories((prev) => prev.filter((c) => c.id !== id));
+  };
+
   const categories = [...defaultCategories, ...customCategories];
 
   const value = {
@@ -49,6 +60,8 @@ export function TransactionsProvider({ children }) {
     setSelectedMonth,
     addOrUpdateTransaction,
     deleteTransaction,
+    addCustomCategory,
+    deleteCustomCategory,
   };
 
   return (

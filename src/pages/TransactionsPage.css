@@ -5,3 +5,13 @@
   flex-direction: column;
   gap: 50px;
 }
+.transaction-page-form {
+  background-color: #fff;
+
+  border-radius: 10px;
+}
+.transaction-page-list {
+  background-color: #ffff;
+  padding: 15px 20px;
+  border-radius: 15px;
+}
