@@ -12,6 +12,7 @@
 }
 .transaction-page-list {
   background-color: #ffff;
-  padding: 15px 20px;
+  padding: 10px 20px;
   border-radius: 15px;
+  margin: 10px;
 }
