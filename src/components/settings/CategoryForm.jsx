@@ -35,14 +35,14 @@ export function CategoryForm() {
   };
 
   return (
-    <div className="form-container">
+    <div className="category-form-container">
       <form onSubmit={handleSubmit}>
-        <div className="form-header">
+        <div className="category-form-header">
           <h3>Add Category</h3>
         </div>
 
-        <div className="form-group">
-          <div className="form-field">
+        <div className="category-form-group">
+          <div className="category-form-field">
             <label htmlFor="name">Category Name</label>
             <input
               type="text"
@@ -52,7 +52,7 @@ export function CategoryForm() {
             />
           </div>
 
-          <div className="form-field">
+          <div className="category-form-field">
             <label htmlFor="type">Type</label>
             <select name="type" value={formState.type} onChange={handleChange}>
               <option value="expense">Expense</option>
@@ -60,7 +60,7 @@ export function CategoryForm() {
             </select>
           </div>
 
-          <div className="form-field">
+          <div className="category-form-field">
             <label htmlFor="color">Color</label>
             <input
               type="color"
@@ -70,7 +70,7 @@ export function CategoryForm() {
             />
           </div>
 
-          <div className="form-field">
+          <div className="category-form-field">
             <label htmlFor="icon">Icon</label>
             <select name="icon" value={formState.icon} onChange={handleChange}>
               {iconOptions.map((iconName) => (
@@ -82,7 +82,7 @@ export function CategoryForm() {
           </div>
         </div>
 
-        <div className="form-actions">
+        <div className="category-form-actions">
           <button type="submit"> Add Category</button>
         </div>
       </form>
