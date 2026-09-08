@@ -3,11 +3,11 @@ import "./SummaryCards.css";
 
 export function SummaryCards({ totalIncome, totalExpenses, netBalance }) {
   const cards = [
-    { label: "Income", value: "totalIncome", tone: "income" },
-    { label: "Expense", value: "totalExpense", tone: "expense" },
+    { label: "Income", value: totalIncome, tone: "income" },
+    { label: "Expense", value: totalExpenses, tone: "expense" },
     {
       label: "Net Balance",
-      value: "netBalance",
+      value: netBalance,
       tone: netBalance >= 0 ? "income" : "expense",
     },
   ];

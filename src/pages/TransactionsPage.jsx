@@ -55,35 +55,37 @@ export function TransactionsPage() {
     <div className="transaction-page-wrapper">
       <div className="transaction-page-header">
         <h3>Transactions Page</h3>
+        <div className="transaction-page-filters">
+          <TransactionFilter
+            selectedMonth={selectedMonth}
+            onMonthChange={setSelectedMonth}
+            typeFilter={typeFilter}
+            onTypeChange={setTypeFilter}
+            categoryFilter={categoryFilter}
+            onCategoryChange={setCategoryFilter}
+            categories={categories}
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+          />
+        </div>
       </div>
-      <div className="transaction-page-filters">
-        <TransactionFilter
-          selectedMonth={selectedMonth}
-          onMonthChange={setSelectedMonth}
-          typeFilter={typeFilter}
-          onTypeChange={setTypeFilter}
-          categoryFilter={categoryFilter}
-          onCategoryChange={setCategoryFilter}
-          categories={categories}
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-        />
-      </div>
-      <div className="transaction-page-form">
-        <TransactionForm
-          onSave={addOrUpdateTransaction}
-          initialData={editTransaction}
-          isEditing={Boolean(editId)}
-          onCancel={handleCancelEdit}
-        />
-      </div>
+      <div className="transaction-page-main">
+        <div className="transaction-page-form">
+          <TransactionForm
+            onSave={addOrUpdateTransaction}
+            initialData={editTransaction}
+            isEditing={Boolean(editId)}
+            onCancel={handleCancelEdit}
+          />
+        </div>
 
-      <div className="transaction-page-list">
-        <TransactionList
-          transactions={filteredTransactions}
-          onDeleteTransactions={deleteTransaction}
-          onEditClick={handleEditClick}
-        />
+        <div className="transaction-page-list">
+          <TransactionList
+            transactions={filteredTransactions}
+            onDeleteTransactions={deleteTransaction}
+            onEditClick={handleEditClick}
+          />
+        </div>
       </div>
     </div>
   );

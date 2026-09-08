@@ -19,8 +19,8 @@ export function DashboardPage() {
       monthTransactions.reduce(
         (acc, t) => {
           const amount = Number(t.amount) || 0;
-          if (t.type === "income") acc.totalIncome += t.amount;
-          else acc.totalExpenses += t.amount;
+          if (t.type === "income") acc.totalIncome += amount;
+          else acc.totalExpenses += amount;
 
           return acc;
         },

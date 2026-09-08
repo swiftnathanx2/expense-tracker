@@ -1,0 +1,36 @@
+.budgets-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0;
+  padding: 20px;
+  background: var(--color-bg, #f3f4f6);
+}
+
+.budgets-page-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-active-text, #1f2937);
+}
+
+.budgets-page-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.budgets-page-form {
+  flex: 1.4;
+  min-width: 380px;
+  max-width: 750px;
+}
+
+.budgets-page-list {
+  flex: 1;
+  min-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
