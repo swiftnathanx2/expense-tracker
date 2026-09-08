@@ -1,77 +1,64 @@
-.form-container {
-  display: flex;
-  flex-direction: column;
-  padding: 16px 60px;
-
-  border-radius: 10px;
+.trans-form-container {
+  max-width: 500px;
+  margin: 0 auto 24px;
+  padding: 24px;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+  background: var(--color-sidebar-bg, #ffffff);
 }
 
-.form-header {
+.trans-form-header {
   margin-bottom: 12px;
   text-align: center;
 }
 
-.form-error {
+.trans-form-error {
   color: #dc2626;
   font-size: 0.9rem;
 }
 
-.form-group {
+.trans-form-group {
   display: flex;
   flex-direction: column;
-
   gap: 12px;
-  width: 100%;
 }
 
-.form-field {
+.trans-form-field {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 200px;
 }
 
-.form-field label {
+.trans-form-field--wide {
+  width: 100%;
+}
+
+.trans-form-field label {
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 4px;
+  color: var(--color-active-text, #1f2937);
 }
 
-.form-field input,
-.form-field select,
-.form-field textarea {
-  /* width: 100%; */
-  padding: 8px 80px;
-  border: 1px solid #d1d5db;
+.trans-form-field input,
+.trans-form-field select,
+.trans-form-field textarea {
+  padding: 8px;
+  border: 1px solid var(--color-border, #d1d5db);
   border-radius: 6px;
   font-size: 0.95rem;
 }
 
-.form-submit {
-  margin-top: 16px;
-  padding: 10px 16px;
-  background: #4c1d95;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.form-submit:hover {
-  background: #3b1470;
-}
-
-.form-actions {
+.trans-form-actions {
   display: flex;
   gap: 12px;
-  margin: 16px;
+  margin-top: 16px;
   justify-content: center;
 }
 
-.form-submit,
-.form-cancel {
-  padding: 8px 16px;
+.trans-form-submit,
+.trans-form-cancel {
+  padding: 10px 16px;
   border-radius: 6px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -81,35 +68,34 @@
     border-color 0.2s ease;
 }
 
-.form-submit {
+.trans-form-submit {
   background-color: #4c1d95;
-  color: #ffffff;
+  color: white;
   border: 1px solid transparent;
 }
 
-.form-submit:hover {
+.trans-form-submit:hover {
   background-color: #3b1470;
 }
 
-.form-cancel {
+.trans-form-cancel {
   background-color: #ffffff;
   color: #4b5563;
   border: 1px solid #d1d5db;
 }
 
-.form-cancel:hover {
+.trans-form-cancel:hover {
   background-color: #f9fafb;
   border-color: #9ca3af;
   color: #1f2937;
 }
 
 @media (max-width: 480px) {
-  .form-actions {
+  .trans-form-actions {
     flex-direction: column-reverse;
   }
-
-  .form-submit,
-  .form-cancel {
+  .trans-form-submit,
+  .trans-form-cancel {
     width: 100%;
     text-align: center;
   }
