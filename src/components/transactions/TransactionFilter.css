@@ -5,7 +5,9 @@
   gap: 12px;
   width: 100%;
   margin-bottom: 16px;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: var(--color-sidebar-bg, #fff);
+  color: var(--color-active-text, #1f2937);
   padding: 20px 30px;
   border-radius: 10px;
 }
@@ -34,5 +36,6 @@
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 20px;
   font-size: 0.95rem;
-  background-color: #fff;
+  background-color: var(--color-sidebar-bg, #fff);
+  color: var(--color-active-text, #1f2937);
 }

@@ -5,6 +5,7 @@
   font-size: 14px;
   font-weight: 500;
   color: #374151;
-  background: #fff;
+  background-color: var(--color-sidebar-bg, #fff);
+  color: var(--color-active-text, #1f2937);
   cursor: pointer;
 }
