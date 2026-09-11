@@ -5,6 +5,9 @@ import "../pages/TransactionsPage.css";
 import { useTransactions } from "../hooks/useTransactions";
 import { TransactionFilter } from "../components/transactions/TransactionFilter";
 import { useDebounce } from "../hooks/useDebounce";
+import { Modal } from "../components/common/Modal";
+import { Button } from "../components/common/Button";
+import { ConfirmDialogue } from "../components/common/ConfirmDialogue";
 
 export function TransactionsPage() {
   const {
@@ -23,6 +26,10 @@ export function TransactionsPage() {
   const [categoryFilter, setCategoryFilter] = useState("all");
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const [pendingDeleteId, setPendingDeletId] = useState(null);
 
   const debouncedSearch = useDebounce(searchTerm, 400);
 
@@ -43,18 +50,37 @@ export function TransactionsPage() {
 
   const editTransaction = transactions?.find((t) => t.id === editId);
 
-  const handleEditClick = (id) => {
-    setEditId(id);
+  const handleAddClick = () => {
+    setEditId(null);
+    setIsFormOpen(true);
   };
 
-  const handleCancelEdit = (id) => {
+  const handleEditClick = (id) => {
+    setEditId(id);
+    setIsFormOpen(true);
+  };
+
+  const handleDeleteClick = (id) => {
+    setPendingDeletId(id);
+  };
+
+  const handleConfirmDelete = () => deleteTransaction(pendingDeleteId);
+
+  const handleCloseModal = () => {
+    setIsFormOpen(false);
     setEditId(null);
+  };
+  const handleSave = (formData) => {
+    addOrUpdateTransaction(formData);
+    setIsFormOpen(false);
   };
 
   return (
     <div className="transaction-page-wrapper">
-      <div className="transaction-page-header">
+      <div className="transaction-page-title">
         <h3>Transactions Page</h3>
+      </div>
+      <div className="transaction-page-header">
         <div className="transaction-page-filters">
           <TransactionFilter
             selectedMonth={selectedMonth}
@@ -68,25 +94,36 @@ export function TransactionsPage() {
             onSearchChange={setSearchTerm}
           />
         </div>
+        <div>
+          <Button onClick={handleAddClick}>Add Transaction</Button>
+        </div>
       </div>
       <div className="transaction-page-main">
-        <div className="transaction-page-form">
-          <TransactionForm
-            onSave={addOrUpdateTransaction}
-            initialData={editTransaction}
-            isEditing={Boolean(editId)}
-            onCancel={handleCancelEdit}
-          />
-        </div>
-
         <div className="transaction-page-list">
           <TransactionList
             transactions={filteredTransactions}
-            onDeleteTransactions={deleteTransaction}
+            onDeleteTransactions={handleDeleteClick}
             onEditClick={handleEditClick}
+          />
+          <ConfirmDialogue
+            isOpen={pendingDeleteId !== null}
+            onClose={() => setPendingDeletId(null)}
+            onConfirm={handleConfirmDelete}
+            message="This transaction will be permanently deleted"
           />
         </div>
       </div>
+
+      <Modal isOpen={isFormOpen} onClose={handleCloseModal}>
+        <div className="transaction-page-form">
+          <TransactionForm
+            onSave={handleSave}
+            initialData={editTransaction}
+            isEditing={Boolean(editId)}
+            onCancel={handleCloseModal}
+          />
+        </div>
+      </Modal>
     </div>
   );
 }
