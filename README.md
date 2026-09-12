@@ -1,16 +1,134 @@
-# Expense-Tracker
+# 💰 Expense-Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A personal finance app that tracks your income and expenses across months to show you your spending habits!.
 
-Currently, two official plugins are available:
+## 📌 Problem Statement
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Personal finance is something that most people struggle with and that is largely due to the fact that they try to track their finances in notebooks which sometimes get lost or scattered. This makes it difficult to truly get insights on their spending habits and to track where their money went to. This app solves that by providing a single platform that records transactions,income or expenses and is able to set budgets for months and track spending habits for each month.
 
-## React Compiler
+## 🎯 Project Goals
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Record income and expense transactions with validation
+- Organize transactions by default and custom categories
+- Filter and search transactions by month, type, category, and note text
+- Set and track monthly budgets per category with visual progress
+- View a dashboard summary with totals and charts
+- Persist all data locally, with a light/dark theme toggle
 
-## Expanding the Oxlint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Front-end**
+
+- React (function components, hooks)
+- React Router
+- Recharts (data visualisation)
+- Lucide-React (icons)
+- Vite
+
+**State & Persistence**
+
+- Context API
+- Custom hooks
+- Browser LocalStorage
+
+**Tooling:**
+
+- Git & GitHub
+- oxlint (linting, enforced via GitHub Actions CI)
+
+## 🖥 Features
+
+- Add / edit / delete transactions with inline validation
+- Default and custom categories (name, color, icon)
+- Filter by month, type, and category
+- Debounced search over transaction notes
+- Monthly budgets per category with color-coded progress bars
+  (safe / warning / over-budget) and clear over-budget warnings
+- Dashboard with income/expense/net balance summary cards
+- Spending-by-category (pie) and spending-over-time (bar) charts
+- Light/dark theme toggle, persisted across sessions
+- Empty states throughout (no transactions, no search results, no budgets)
+- Fully responsive layout
+
+## 📷 Screenshots
+
+![Dashboard](./Screenshots/dashboard.png)
+![Transaction](./Screenshots/transaction.png)
+![Budgtes](./Screenshots/budgets.png)
+![Settings](./Screenshots/settings.png)
+![Darkmode](./Screenshots/dark-mode.png)
+
+## 🔗 Live Demo
+
+## ⚙️ Installation & Setup
+
+Clone the repository:
+
+```bash
+git clone https://github.com/swiftnathanx2/expense-tracker.git
+cd expense-tracker
+```
+
+Install dependencies:
+
+```bash
+npm install
+
+```
+
+Run the development server:
+
+```bash
+npm run dev
+
+```
+
+## 🧠 Challenges Faced
+
+- Keeping a single shared `selectedMonth` in Context so Transactions,
+  Budgets, and the Dashboard all stay in sync, rather than each page
+  managing its own filter independently
+- Debugging a recurring bug where transaction amounts were saved as
+  strings instead of numbers, which silently broke budget and dashboard
+  totals until traced back to a missing `Number()` conversion on submit
+- Structuring reusable Context + custom hook patterns
+  (`useLocalStorage`, `useTransactions`, `useBudgets`) so persistence
+  logic lived in one place instead of being duplicated per feature
+- Creating debounce logic with UseEffect.
+- Making reusable components and wiring them across the system
+
+## 📚 What I Learned
+
+- Structuring shared application state with Context API and custom hooks
+- Building a reusable `useLocalStorage` hook instead of scattering
+  persistence logic across components
+- Debugging real string-vs-number data bugs that don't throw errors
+  but silently produce wrong output
+- How to use Lucide react icons.
+- How to use conditional render to show or hide certain components.
+- Setting up a GitHub Actions CI workflow to enforce linting on every push
+
+## 🔀 Tradeoffs & Decisions
+
+- Used Context + custom hooks for state management instead of a state
+  library like Redux, per the project's constraints this avoided
+  prop-drilling while keeping the app dependency-light
+- Charts are built with Recharts rather than hand-rolled SVG.
+- Built transaction item inline inside Transactionlist to avoid refactoring the code to work in a new component.
+
+- Rendered Transaction form as a modal for the UX appeal
+
+## 🚀 Future Improvements
+
+- Extract `TransactionItem` into its own component
+- Add a modal for the transaction form
+- Add recurring transactions or CSV export as a bonus feature
+
+👨🏽‍💻 Author
+
+Nyoh Jonathan Smith
+
+Junior Fullstack Developer.
+
+📩 Email: swiftnathan702@gmail.com
+🌍 Based in Cameroon | Open to remote opportunities
