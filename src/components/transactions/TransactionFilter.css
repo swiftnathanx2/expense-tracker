@@ -39,3 +39,23 @@
   background-color: var(--color-sidebar-bg, #fff);
   color: var(--color-active-text, #1f2937);
 }
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .filter-bar-month-select,
+  .filter-bar-type-filter,
+  .filter-bar-category-filter,
+  .search-bar {
+    width: 100%;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    width: 100%;
+  }
+}

@@ -44,3 +44,13 @@
   flex: 1.7;
   min-width: 450px;
 }
+@media (max-width: 768px) {
+  .transaction-page-main {
+    flex-wrap: wrap;
+  }
+
+  .transaction-page-list {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+}

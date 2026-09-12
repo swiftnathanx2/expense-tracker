@@ -103,3 +103,25 @@
   background: #ffe9e9bb;
   border-radius: 50%;
 }
+
+@media (max-width: 480px) {
+  .transaction-item-main {
+    min-width: 100%;
+    order: 1;
+  }
+
+  .transaction-item-amount {
+    order: 2;
+    text-align: left;
+  }
+
+  .transaction-item-date {
+    order: 3;
+    text-align: left;
+  }
+
+  .transaction-item-actions {
+    order: 4;
+    margin-left: auto;
+  }
+}
