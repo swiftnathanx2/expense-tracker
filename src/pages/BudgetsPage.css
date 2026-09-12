@@ -1,43 +1,61 @@
 .budgets-page-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: 1400px;
-  width: 100%;
-  margin: 0;
-  padding: 20px;
-  background: var(--color-bg, #f3f4f6);
-
   align-items: center;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-bg, #f3f4f6);
 }
 
 .budgets-page-header {
-  max-width: 1000px;
   width: 100%;
+  max-width: 600px;
 }
+
 .budgets-page-header h3 {
-  margin: 0;
-  font-size: 1.1rem;
+  margin: 5px;
+  font-size: 1.1 rem;
   color: var(--color-active-text, #1f2937);
 }
 
 .budgets-page-main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 600px;
 }
 
-.budgets-page-form {
-  width: 100%;
-  max-width: 1000px;
-}
-
+.budgets-page-form,
 .budgets-page-list {
   width: 100%;
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .budgets-page-header,
+  .budgets-page-main {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  .budgets-page-header,
+  .budgets-page-main {
+    max-width: 800px;
+  }
+
+  .budgets-page-main {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .budgets-page-header,
+  .budgets-page-main {
+    max-width: 1000px;
+  }
+
+  .budgets-page-header h3 {
+    font-size: 1.1rem;
+  }
 }

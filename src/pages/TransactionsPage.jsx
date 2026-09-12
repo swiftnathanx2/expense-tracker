@@ -94,7 +94,7 @@ export function TransactionsPage() {
             onSearchChange={setSearchTerm}
           />
         </div>
-        <div>
+        <div className="transaction-page-header-add-btn">
           <Button onClick={handleAddClick}>Add Transaction</Button>
         </div>
       </div>
