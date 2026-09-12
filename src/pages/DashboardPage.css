@@ -12,8 +12,8 @@
   justify-content: space-between;
 }
 
-.dashboard-page--header h1 {
-  font-size: 1.6rem;
+.dashboard-page--header h3 {
+  font-size: 1.1rem;
   color: var(--color-active-text, #111827);
 }
 

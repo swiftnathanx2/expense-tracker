@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTransactions } from "../../hooks/useTransactions";
+import { Button } from "../common/Button";
 import "../settings/CategoryForm.css";
 
 const initialValue = {
@@ -35,59 +36,55 @@ export function CategoryForm() {
   };
 
   return (
-    <div className="category-form-container">
-      <form onSubmit={handleSubmit}>
-        <div className="category-form-header">
-          <h3>Add Category</h3>
+    <form onSubmit={handleSubmit} className="category-form-container">
+      <div className="category-form-header">
+        <h3>Add Category</h3>
+      </div>
+
+      <div className="category-form-group">
+        <div className="category-form-field">
+          <label htmlFor="name">Category Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formState.name}
+            onChange={handleChange}
+          />
         </div>
 
-        <div className="category-form-group">
-          <div className="category-form-field">
-            <label htmlFor="name">Category Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formState.name}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="category-form-field">
-            <label htmlFor="type">Type</label>
-            <select name="type" value={formState.type} onChange={handleChange}>
-              <option value="expense">Expense</option>
-              <option value="income">Income</option>
-            </select>
-          </div>
-
-          <div className="category-form-field">
-            <label htmlFor="color">Color</label>
-            <input
-              type="color"
-              name="color"
-              value={formState.color}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="category-form-field">
-            <label htmlFor="icon">Icon</label>
-            <select name="icon" value={formState.icon} onChange={handleChange}>
-              {iconOptions.map((iconName) => (
-                <option key={iconName} value={iconName}>
-                  {iconName}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className="category-form-field">
+          <label htmlFor="type">Type</label>
+          <select name="type" value={formState.type} onChange={handleChange}>
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+          </select>
         </div>
 
-        <div className="category-form-actions">
-          <button type="submit" className="category-form-submit">
-            Add Category
-          </button>
+        <div className="category-form-field">
+          <label htmlFor="color">Color</label>
+          <input
+            type="color"
+            name="color"
+            value={formState.color}
+            onChange={handleChange}
+          />
         </div>
-      </form>
-    </div>
+
+        <div className="category-form-field">
+          <label htmlFor="icon">Icon</label>
+          <select name="icon" value={formState.icon} onChange={handleChange}>
+            {iconOptions.map((iconName) => (
+              <option key={iconName} value={iconName}>
+                {iconName}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="category-form-actions">
+        <Button type="submit">Add Category</Button>
+      </div>
+    </form>
   );
 }

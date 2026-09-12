@@ -45,7 +45,7 @@ export function DashboardPage() {
     <div className="dashboard-page">
       <div className="dashboard-page--header">
         <div>
-          <h1>dashboard</h1>
+          <h3>Dashboard</h3>
           <p className="dashboard-page--subtitle">
             Overview for {selectedMonth}
           </p>

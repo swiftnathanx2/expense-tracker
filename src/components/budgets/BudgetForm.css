@@ -1,7 +1,7 @@
 .budget-form-container {
   width: 100%;
-  max-width: 750px; /* was 420px — matches its parent's cap */
-  margin: 0; /* was: 0 auto 24px — no longer self-centering */
+
+  margin: 0;
   padding: 28px;
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 10px;
@@ -36,15 +36,11 @@
   color: var(--color-active-text, #1f2937);
 }
 
-.budget-form-submit {
-  margin-top: 16px;
-  padding: 10px 16px;
-  background: #4c1d95;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
+.budget-form-btn-submit button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px auto;
   width: 100%;
 }
 
