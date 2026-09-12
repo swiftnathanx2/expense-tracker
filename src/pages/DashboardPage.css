@@ -72,4 +72,7 @@
   .dashboard-page--main {
     grid-template-columns: 1fr;
   }
+  .dashboard-page--chart-placeholder {
+    flex-direction: column;
+  }
 }

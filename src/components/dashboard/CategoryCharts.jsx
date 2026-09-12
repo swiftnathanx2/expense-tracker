@@ -41,7 +41,7 @@ export function CategoryCharts({ transactions }) {
   return (
     <ResponsiveContainer width="100%" height={280}>
       <PieChart>
-        <Pie data={data} dataKey="value" nameKey="name" outerRadius={100} label>
+        <Pie data={data} dataKey="value" nameKey="name" outerRadius="70%" label>
           {data.map((entry, index) => (
             <Cell key={index} fill={entry.color} />
           ))}
