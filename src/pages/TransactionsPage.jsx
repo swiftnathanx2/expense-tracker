@@ -2,29 +2,16 @@ import { useState } from "react";
 import { TransactionForm } from "../components/transactions/TransactionForm";
 import { TransactionList } from "../components/transactions/TransactionList";
 import "../pages/TransactionsPage.css";
+import { useTransactions } from "../hooks/useTransactions";
 
 export function TransactionsPage() {
-  const [transactions, setTransactions] = useState([]);
-
-  const [editId, setEditId] = useState(null);
-
-  const handleSaveTransaction = (formData) => {
-    if (editId) {
-      setTransactions((prev) => {
-        return prev.map((t) => (t.id === editId ? { ...t, ...formData } : t));
-      });
-      setEditId(null);
-    } else {
-      setTransactions((prev) => [
-        { id: crypto.randomUUID(), ...formData },
-        ...prev,
-      ]);
-    }
-  };
-
-  const handleDeleteTransaction = (id) => {
-    setTransactions((prev) => prev.filter((t) => t.id !== id));
-  };
+  const {
+    transactions,
+    editId,
+    addOrUpdateTransaction,
+    deleteTransaction,
+    setEditId,
+  } = useTransactions();
 
   const editTransaction = transactions?.find((t) => t.id === editId);
 
@@ -43,7 +30,7 @@ export function TransactionsPage() {
       </div>
       <div className="transaction-page-form">
         <TransactionForm
-          onSave={handleSaveTransaction}
+          onSave={addOrUpdateTransaction}
           initialData={editTransaction}
           isEditing={Boolean(editId)}
           onCancel={handleCancelEdit}
@@ -53,7 +40,7 @@ export function TransactionsPage() {
         <h3>Recent Transactions</h3>
         <TransactionList
           transactions={transactions}
-          onDeleteTransactions={handleDeleteTransaction}
+          onDeleteTransactions={deleteTransaction}
           onEditClick={handleEditClick}
         />
       </div>
