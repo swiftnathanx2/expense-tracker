@@ -2,29 +2,36 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 24px;
+  max-width: 1400px; /* wider ceiling, but no longer the main width driver */
+  margin: 0; /* was: 0 auto — stop centering */
+  padding: 20px; /* was: 24px — tightens the gap from the sidebar to exactly 20px */
+  background: var(--color-bg, #f3f4f6);
 }
 
 .transaction-page-header h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: var(--color-text, #1f2937);
+  margin: 10px;
+  font-size: 1.2rem;
+  color: var(--color-active-text, #1f2937);
 }
 
 .transaction-page-filters {
   width: 100%;
   display: flex;
 }
+.transaction-page-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
 
 .transaction-page-form {
-  /* background-color: #fff; */
-  border-radius: 10px;
-  width: 100%;
+  flex: 1.3; /* was 1 — now claims MORE share than the list */
+  min-width: 380px;
+  max-width: 700px;
 }
 
 .transaction-page-list {
-  width: 100%;
-  min-height: 250px;
+  flex: 1.7; /* was 2 — reduced, since form now leads */
+  min-width: 450px;
 }
