@@ -74,6 +74,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
           <div className="trans-form-field">
             <label htmlFor="amount">Amount</label>
             <input
+              id="amount"
               type="number"
               name="amount"
               min={0}

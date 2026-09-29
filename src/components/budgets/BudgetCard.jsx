@@ -1,5 +1,6 @@
 import { useTransactions } from "../../hooks/useTransactions";
 import "../budgets/BudgetCard.css";
+import { formatCurrency } from "../../utils/FormatCurrency";
 
 const getBudgetStatus = (percent) => {
   if (percent >= 100) return "danger";
@@ -38,7 +39,7 @@ export function BudgetCard({ budget }) {
         <span className="budget-card-name">{category?.name}</span>
         <span className="budget-card-month">{formatMonth(budget.month)}</span>
         <span className={`budget-card-amount ${status}`}>
-          {spent} / {budget.limit}
+          {formatCurrency(spent)} / {formatCurrency(budget.limit)}
         </span>
       </div>
 
@@ -50,7 +51,9 @@ export function BudgetCard({ budget }) {
       </div>
 
       {status === "danger" && (
-        <p className="budget-warning">Over budget by {spent - budget.limit}</p>
+        <p className="budget-warning">
+          Over budget by {formatCurrency(spent - budget.limit)}
+        </p>
       )}
     </div>
   );

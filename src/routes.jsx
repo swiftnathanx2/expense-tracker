@@ -11,24 +11,22 @@ import { ThemeProvider } from "./context/ThemeContext";
 
 export default function AppRoutes() {
   return (
-    <div>
-      <ThemeProvider>
-        <TransactionsProvider>
-          <BudgetsProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route element={<MainLayout />}>
-                  <Route index element={<DashboardPage />} />
-                  <Route path="/transactions" element={<TransactionsPage />} />
-                  <Route path="/budgets" element={<BudgetsPage />} />
-                  <Route path="/settings" element={<SettingsPage />} />
-                </Route>
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </BrowserRouter>
-          </BudgetsProvider>
-        </TransactionsProvider>
-      </ThemeProvider>
-    </div>
+    <ThemeProvider>
+      <TransactionsProvider>
+        <BudgetsProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<MainLayout />}>
+                <Route index element={<DashboardPage />} />
+                <Route path="/transactions" element={<TransactionsPage />} />
+                <Route path="/budgets" element={<BudgetsPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+              </Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+        </BudgetsProvider>
+      </TransactionsProvider>
+    </ThemeProvider>
   );
 }

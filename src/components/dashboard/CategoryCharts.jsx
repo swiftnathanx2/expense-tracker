@@ -9,6 +9,7 @@ import {
 import { useTransactions } from "../../hooks/useTransactions";
 import { PieChart as PieIcon } from "lucide-react";
 import { EmptyState } from "../common/EmptyState";
+import { formatCurrency } from "../../utils/FormatCurrency";
 
 export function CategoryCharts({ transactions }) {
   const { categories } = useTransactions();
@@ -41,12 +42,18 @@ export function CategoryCharts({ transactions }) {
   return (
     <ResponsiveContainer width="100%" height={280}>
       <PieChart>
-        <Pie data={data} dataKey="value" nameKey="name" outerRadius="70%" label>
+        <Pie
+          data={data}
+          dataKey="value"
+          nameKey="name"
+          outerRadius="70%"
+          label={({ value }) => formatCurrency(value)}
+        >
           {data.map((entry, index) => (
             <Cell key={index} fill={entry.color} />
           ))}
         </Pie>
-        <Tooltip />
+        <Tooltip formatter={(value) => formatCurrency(value)} />
         <Legend />
       </PieChart>
     </ResponsiveContainer>

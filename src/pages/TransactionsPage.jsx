@@ -41,7 +41,7 @@ export function TransactionsPage() {
     const catMatch =
       categoryFilter === "all" || t.categoryId === categoryFilter;
 
-    const searchMatch = t.note
+    const searchMatch = (t.note || "")
       .toLowerCase()
       .includes(debouncedSearch.toLowerCase());
 
@@ -75,6 +75,13 @@ export function TransactionsPage() {
     setIsFormOpen(false);
   };
 
+  const clearFilters = () => {
+    setTypeFilter("all");
+    setCategoryFilter("all");
+    setSearchTerm("");
+    setSelectedMonth("");
+  };
+
   return (
     <div className="transaction-page-wrapper">
       <div className="transaction-page-title">
@@ -102,6 +109,8 @@ export function TransactionsPage() {
         <div className="transaction-page-list">
           <TransactionList
             transactions={filteredTransactions}
+            totalCount={transactions.length}
+            onClearFilters={clearFilters}
             onDeleteTransactions={handleDeleteClick}
             onEditClick={handleEditClick}
           />
@@ -115,14 +124,13 @@ export function TransactionsPage() {
       </div>
 
       <Modal isOpen={isFormOpen} onClose={handleCloseModal}>
-        <div className="transaction-page-form">
-          <TransactionForm
-            onSave={handleSave}
-            initialData={editTransaction}
-            isEditing={Boolean(editId)}
-            onCancel={handleCloseModal}
-          />
-        </div>
+        <TransactionForm
+          className="transaction-page-form"
+          onSave={handleSave}
+          initialData={editTransaction}
+          isEditing={Boolean(editId)}
+          onCancel={handleCloseModal}
+        />
       </Modal>
     </div>
   );
