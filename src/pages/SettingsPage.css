@@ -1,3 +1,24 @@
-.settings-container {
+.settings-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1400px;
   width: 100%;
+}
+
+.settings-page-main {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.settings-page-title {
+  max-width: 1000px;
+  width: 100%;
+}
+.settings-page-title h3 {
+  margin: 10px;
+  font-size: 1.1rem;
+  color: var(--color-active-text, #1f2937);
+  text-align: left;
 }
