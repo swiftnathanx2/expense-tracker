@@ -1,7 +1,7 @@
 .category-form-container {
   max-width: 700px;
   margin: 0 auto;
-  padding: 8px 2px;
+  padding: 24px;
   background: var(--color-sidebar-bg, #ffffff);
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 8px;
@@ -10,13 +10,11 @@
 .category-form-header {
   margin-bottom: 12px;
   text-align: center;
-  font-family: sans-serif;
 }
 
 .category-form-group {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 12px;
   align-items: center;
 }
@@ -26,7 +24,6 @@
   flex-direction: column;
   width: 60%;
   min-width: 140px;
-  /* max-width: 320px; */
 }
 
 .category-form-field label {
@@ -51,21 +48,9 @@
 }
 
 .category-form-actions {
-  /* margin: 16px; */
   display: flex;
   justify-content: center;
-  padding: 10px;
-}
-.category-form-actions button {
-  padding: 10px;
-  background-color: #4c1d95;
-  border: none;
-  border-radius: 5px;
-  color: var(--color-border);
-}
-.category-form-actions button:hover {
-  background: #6832b4;
-  cursor: pointer;
+  margin-top: 16px;
 }
 
 .category-form-submit {
@@ -78,6 +63,6 @@
   font-weight: 600;
 }
 
-.form-submit:hover {
+.category-form-submit:hover {
   background: #3b1470;
 }

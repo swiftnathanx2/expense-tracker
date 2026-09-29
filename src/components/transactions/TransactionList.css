@@ -13,7 +13,9 @@
   text-align: center;
   gap: 10px;
 }
-
+.transaction-row--compact {
+  grid-template-columns: repeat(5, 1fr);
+}
 .transaction-row--header {
   font-weight: 600;
   border-bottom: 2px solid #d1d5db;

@@ -10,6 +10,14 @@ export function BudgetForm() {
   const initialValue = { categoryId: "", limit: "" };
   const [formState, setFormState] = useState(initialValue);
 
+  const formatMonth = (monthStr) => {
+    const [year, month] = monthStr.split("-");
+    return new Date(year, month - 1).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -30,9 +38,9 @@ export function BudgetForm() {
   const expenseCategories = categories.filter((cat) => cat.type === "expense");
 
   return (
-    <form onSubmit={handleSubmit} className="form-container">
-      <div className="form-group">
-        <div className="form-field">
+    <form onSubmit={handleSubmit} className="budget-form-container">
+      <div className="budget-form-group">
+        <div className="budget-form-field">
           <label htmlFor="categoryId">Category</label>
           <select
             name="categoryId"
@@ -50,7 +58,7 @@ export function BudgetForm() {
           </select>
         </div>
 
-        <div className="form-field">
+        <div className="budget-form-field">
           <label htmlFor="limit">Monthly Limit</label>
           <input
             type="number"
@@ -62,7 +70,7 @@ export function BudgetForm() {
         </div>
       </div>
 
-      <button type="submit" className="form-submit">
+      <button type="submit" className="budget-form-submit">
         Set Budget
       </button>
     </form>

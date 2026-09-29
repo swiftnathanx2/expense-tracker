@@ -63,14 +63,14 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="form-container">
-        <div className="form-header">
+      <form onSubmit={handleSubmit} className="trans-form-container">
+        <div className="trans-form-header">
           <h3>{isEditing ? "Edit Transaction" : "Add Transaction"}</h3>
           {error && <p className="form-error">{error}</p>}
         </div>
 
-        <div className="form-group">
-          <div className="form-field">
+        <div className="trans-form-group">
+          <div className="trans-form-field">
             <label htmlFor="amount">Amount</label>
             <input
               type="number"
@@ -81,7 +81,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
             />
           </div>
 
-          <div className="form-field">
+          <div className="trans-form-field">
             <label htmlFor="type">Type</label>
             <select name="type" value={formState.type} onChange={handleChange}>
               <option value="expense">Expense</option>
@@ -89,7 +89,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
             </select>
           </div>
 
-          <div className="form-field">
+          <div className="trans-form-field">
             <label htmlFor="categoryId">Category</label>
             <select
               name="categoryId"
@@ -109,7 +109,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
             </select>
           </div>
 
-          <div className="form-field">
+          <div className="trans-form-field">
             <label htmlFor="date">Date</label>
             <input
               type="date"
@@ -119,7 +119,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
             />
           </div>
 
-          <div className="form-field form-field--wide">
+          <div className="trans-form-field trans-form-field--wide">
             <label htmlFor="note">Note</label>
             <textarea
               name="note"
@@ -129,12 +129,16 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
             ></textarea>
           </div>
         </div>
-        <div className="form-actions">
-          <button type="submit" className="form-submit">
+        <div className="trans-form-actions">
+          <button type="submit" className="trans-form-submit">
             {isEditing ? "Update Transaction" : "Add Transaction"}
           </button>
           {isEditing && (
-            <button type="button" onClick={onCancel} className="form-cancel">
+            <button
+              type="button"
+              onClick={onCancel}
+              className="trans-form-cancel"
+            >
               Cancel
             </button>
           )}
