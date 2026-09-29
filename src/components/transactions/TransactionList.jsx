@@ -1,4 +1,4 @@
-import defaultCategories from "../../data/categories";
+import { useTransactions } from "../../hooks/useTransactions";
 import { EmptyState } from "../common/EmptyState";
 import "../transactions/TransactionList.css";
 import { Trash2, Inbox, Pen } from "lucide-react";
@@ -8,6 +8,8 @@ export function TransactionList({
   onDeleteTransactions,
   onEditClick,
 }) {
+  const { categories } = useTransactions();
+
   if (transactions.length === 0) {
     return (
       <EmptyState
@@ -24,6 +26,9 @@ export function TransactionList({
   };
   return (
     <div>
+      <div className="transaction-header">
+        <h3>Recent Transactions</h3>
+      </div>
       <div className="transaction-list">
         <div className="transaction-row transaction-row--header">
           <span>Amount</span>
@@ -37,7 +42,7 @@ export function TransactionList({
         <div className="transaction-body">
           <ul>
             {transactions.map((trans) => {
-              const category = defaultCategories.find(
+              const category = categories.find(
                 (cat) => cat.id === trans.categoryId,
               );
               return (

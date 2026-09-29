@@ -1,4 +1,5 @@
 import { CategoryForm } from "../components/settings/CategoryForm";
+import { CategoryList } from "../components/settings/CategoryList";
 
 export function SettingsPage() {
   return (
@@ -9,6 +10,9 @@ export function SettingsPage() {
 
       <div className="settings-custom-category">
         <CategoryForm />
+      </div>
+      <div className="settings-custom-category-list">
+        <CategoryList />
       </div>
     </div>
   );

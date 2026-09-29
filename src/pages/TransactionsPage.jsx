@@ -3,6 +3,7 @@ import { TransactionForm } from "../components/transactions/TransactionForm";
 import { TransactionList } from "../components/transactions/TransactionList";
 import "../pages/TransactionsPage.css";
 import { useTransactions } from "../hooks/useTransactions";
+import { TransactionFilter } from "../components/transactions/TransactionFilter";
 
 export function TransactionsPage() {
   const {
@@ -11,7 +12,29 @@ export function TransactionsPage() {
     addOrUpdateTransaction,
     deleteTransaction,
     setEditId,
+    categories,
+    selectedMonth,
+    setSelectedMonth,
   } = useTransactions();
+
+  const [typeFilter, setTypeFilter] = useState("all");
+
+  const [categoryFilter, setCategoryFilter] = useState("all");
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredTransactions = transactions.filter((t) => {
+    const monthMatch = !selectedMonth || t.date.startsWith(selectedMonth);
+
+    const typeMatch = typeFilter === "all" || t.type === typeFilter;
+
+    const catMatch =
+      categoryFilter === "all" || t.categoryId === categoryFilter;
+
+    const searchMatch = t.note.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return monthMatch && typeMatch && catMatch && searchMatch;
+  });
 
   const editTransaction = transactions?.find((t) => t.id === editId);
 
@@ -26,7 +49,20 @@ export function TransactionsPage() {
   return (
     <div className="transaction-page-wrapper">
       <div className="transaction-page-header">
-        <h1>Transactions Page</h1>
+        <h3>Transactions Page</h3>
+      </div>
+      <div className="transaction-page-filters">
+        <TransactionFilter
+          selectedMonth={selectedMonth}
+          onMonthChange={setSelectedMonth}
+          typeFilter={typeFilter}
+          onTypeChange={setTypeFilter}
+          categoryFilter={categoryFilter}
+          onCategoryChange={setCategoryFilter}
+          categories={categories}
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
       </div>
       <div className="transaction-page-form">
         <TransactionForm
@@ -36,10 +72,10 @@ export function TransactionsPage() {
           onCancel={handleCancelEdit}
         />
       </div>
+
       <div className="transaction-page-list">
-        <h3>Recent Transactions</h3>
         <TransactionList
-          transactions={transactions}
+          transactions={filteredTransactions}
           onDeleteTransactions={deleteTransaction}
           onEditClick={handleEditClick}
         />
