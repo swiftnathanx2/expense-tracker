@@ -1,4 +1,4 @@
-.form-container {
+.category-form-container {
   max-width: 700px;
   margin: 0 auto;
   padding: 8px 2px;
@@ -7,13 +7,13 @@
   border-radius: 8px;
 }
 
-.form-header {
+.category-form-header {
   margin-bottom: 12px;
   text-align: center;
   font-family: sans-serif;
 }
 
-.form-group {
+.category-form-group {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -21,7 +21,7 @@
   align-items: center;
 }
 
-.form-field {
+.category-form-field {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -29,46 +29,46 @@
   /* max-width: 320px; */
 }
 
-.form-field label {
+.category-form-field label {
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--color-active-text, #1f2937);
 }
 
-.form-field input,
-.form-field select {
+.category-form-field input,
+.category-form-field select {
   padding: 8px;
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 6px;
   font-size: 0.95rem;
 }
 
-.form-field input[type="color"] {
+.category-form-field input[type="color"] {
   padding: 2px;
   height: 38px;
   cursor: pointer;
 }
 
-.form-actions {
+.category-form-actions {
   /* margin: 16px; */
   display: flex;
   justify-content: center;
   padding: 10px;
 }
-.form-actions button {
+.category-form-actions button {
   padding: 10px;
   background-color: #4c1d95;
   border: none;
   border-radius: 5px;
   color: var(--color-border);
 }
-.form-actions button:hover {
+.category-form-actions button:hover {
   background: #6832b4;
   cursor: pointer;
 }
 
-.form-submit {
+.category-form-submit {
   padding: 10px 16px;
   background: #4c1d95;
   color: white;

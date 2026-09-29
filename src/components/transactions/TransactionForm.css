@@ -1,12 +1,13 @@
 .form-container {
-  max-width: 700px;
-  padding: 16px;
+  /* max-width: 700px; */
+  padding: 16px 60px;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .form-header {
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .form-error {
@@ -16,20 +17,17 @@
 
 .form-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
   gap: 12px;
+  width: 100%;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-width: 140px;
-}
-
-.form-field--wide {
-  flex: 2;
-  min-width: 220px;
+  width: 100%;
+  min-width: 200px;
 }
 
 .form-field label {
@@ -41,7 +39,8 @@
 .form-field input,
 .form-field select,
 .form-field textarea {
-  padding: 8px;
+  /* width: 100%; */
+  padding: 8px 30px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font-size: 0.95rem;
@@ -65,11 +64,10 @@
 .form-actions {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
-  justify-content: flex-start; /* Aligns buttons to the left */
+  margin: 16px;
+  justify-content: center;
 }
 
-/* Base styling for both buttons to reduce duplication */
 .form-submit,
 .form-cancel {
   padding: 8px 16px;
@@ -82,7 +80,6 @@
     border-color 0.2s ease;
 }
 
-/* Primary Action Button (Add / Update) */
 .form-submit {
   background-color: #4c1d95;
   color: #ffffff;
@@ -93,11 +90,10 @@
   background-color: #3b1470;
 }
 
-/* Secondary Action Button (Cancel) */
 .form-cancel {
   background-color: #ffffff;
-  color: #4b5563; /* Accessible gray */
-  border: 1px solid #d1d5db; /* Matches input borders */
+  color: #4b5563;
+  border: 1px solid #d1d5db;
 }
 
 .form-cancel:hover {
@@ -106,10 +102,9 @@
   color: #1f2937;
 }
 
-/* Responsive adjustment for small mobile screens */
 @media (max-width: 480px) {
   .form-actions {
-    flex-direction: column-reverse; /* Puts cancel on the bottom for easy thumb reach */
+    flex-direction: column-reverse;
   }
 
   .form-submit,
