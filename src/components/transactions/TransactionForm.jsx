@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { useTransactions } from "../../hooks/useTransactions";
 import "../transactions/TransactionForm.css";
+import { Button } from "../common/Button";
 
 const initialValue = {
   type: "expense",
@@ -130,17 +131,13 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
           </div>
         </div>
         <div className="trans-form-actions">
-          <button type="submit" className="trans-form-submit">
+          <Button type="submit">
             {isEditing ? "Update Transaction" : "Add Transaction"}
-          </button>
+          </Button>
           {isEditing && (
-            <button
-              type="button"
-              onClick={onCancel}
-              className="trans-form-cancel"
-            >
+            <Button type="button" onClick={onCancel} variant="secondary">
               Cancel
-            </button>
+            </Button>
           )}
         </div>
       </form>

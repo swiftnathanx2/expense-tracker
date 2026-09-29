@@ -9,9 +9,16 @@
   background: var(--color-bg, #f3f4f6);
 }
 
-.transaction-page-header h3 {
-  margin: 10px;
-  font-size: 1.2rem;
+.transaction-page-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.transaction-page-title h3 {
+  margin: 5px;
+  font-size: 1.1rem;
   color: var(--color-active-text, #1f2937);
 }
 
@@ -19,6 +26,7 @@
   width: 100%;
   display: flex;
 }
+
 .transaction-page-main {
   display: flex;
   flex-wrap: wrap;
