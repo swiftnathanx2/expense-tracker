@@ -1,7 +1,15 @@
+import { CategoryForm } from "../components/settings/CategoryForm";
+
 export function SettingsPage() {
   return (
-    <div>
-      <h1>Settings</h1>
+    <div className="settings-container">
+      <div className="settings-title">
+        <h3>Settings</h3>
+      </div>
+
+      <div className="settings-custom-category">
+        <CategoryForm />
+      </div>
     </div>
   );
 }
