@@ -67,3 +67,8 @@
     max-width: 100%;
   }
 }
+@media (min-width: 1200px) {
+  .modal-content {
+    max-width: 720px;
+  }
+}

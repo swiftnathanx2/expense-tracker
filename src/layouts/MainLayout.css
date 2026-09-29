@@ -145,11 +145,25 @@ body {
   }
 
   .theme-toggle-btn {
+    display: flex;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 100;
+    background: var(--color-sidebar-bg, #fff);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .theme-toggle-btn span {
     display: none;
   }
 
   .main-content {
     padding: 16px;
+    padding-top: 64px;
     padding-bottom: 80px;
   }
 
