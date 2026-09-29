@@ -23,6 +23,7 @@ export function TransactionsProvider({ children }) {
       setTransactions((prev) =>
         prev.map((t) => (t.id === editId ? { ...t, ...formData } : t)),
       );
+
       setEditId(null);
     } else {
       setTransactions((prev) => [
@@ -38,7 +39,7 @@ export function TransactionsProvider({ children }) {
 
   const addCustomCategory = (categoryData) => {
     setCustomCategories((prev) => [
-      { id: crypto.randomUUID(), ...categoryData },
+      { id: crypto.randomUUID(), createdAt: Date.now(), ...categoryData },
       ...prev,
     ]);
   };

@@ -7,6 +7,7 @@ export function TransactionList({
   transactions,
   onDeleteTransactions,
   onEditClick,
+  compact = false,
 }) {
   const { categories } = useTransactions();
 
@@ -30,14 +31,16 @@ export function TransactionList({
         <h3>Recent Transactions</h3>
       </div>
       <div className="transaction-list">
-        <div className="transaction-row transaction-row--header">
+        <div
+          className={`transaction-row transaction-row--header ${compact ? "transaction-row--compact" : ""}`}
+        >
           <span>Amount</span>
           <span>Type</span>
           <span>Category</span>
           <span>Date</span>
           <span>Note</span>
-          <span>Delete</span>
-          <span>Edit</span>
+          {!compact && <span>Delete</span>}
+          {!compact && <span>Edit</span>}
         </div>
         <div className="transaction-body">
           <ul>
@@ -46,7 +49,10 @@ export function TransactionList({
                 (cat) => cat.id === trans.categoryId,
               );
               return (
-                <li key={trans.id} className="transaction-row">
+                <li
+                  key={trans.id}
+                  className={`transaction-row ${compact ? "transaction-row--compact" : ""}`}
+                >
                   <span className={trans.type}>
                     {trans.type === "expense" ? "-" : "+"}
                     {trans.amount}
@@ -55,22 +61,26 @@ export function TransactionList({
                   <span>{category?.name}</span>
                   <span>{trans.date}</span>
                   <span>{trans.note}</span>
-                  <span>
-                    <button
-                      onClick={() => handleDeleteClick(trans.id)}
-                      className="transaction-row--delete"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </span>
-                  <span>
-                    <button
-                      onClick={() => onEditClick(trans.id)}
-                      className="transaction-row--edit"
-                    >
-                      <Pen size={16} />
-                    </button>
-                  </span>
+                  {!compact && (
+                    <span>
+                      <button
+                        onClick={() => handleDeleteClick(trans.id)}
+                        className="transaction-row--delete"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </span>
+                  )}
+                  {!compact && (
+                    <span>
+                      <button
+                        onClick={() => onEditClick(trans.id)}
+                        className="transaction-row--edit"
+                      >
+                        <Pen size={16} />
+                      </button>
+                    </span>
+                  )}
                 </li>
               );
             })}

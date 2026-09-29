@@ -83,7 +83,9 @@ export function CategoryForm() {
         </div>
 
         <div className="category-form-actions">
-          <button type="submit"> Add Category</button>
+          <button type="submit" className="category-form-submit">
+            Add Category
+          </button>
         </div>
       </form>
     </div>
