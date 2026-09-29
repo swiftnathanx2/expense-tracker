@@ -1,0 +1,63 @@
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn--primary {
+  background-color: #1f58d1;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.btn--primary:hover {
+  background-color: #3f73e4;
+  box-shadow: 0 4px 8px rgba(22, 63, 153, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+.btn--secondary {
+  background-image: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+  background-color: #f1f5f9;
+  color: #475569;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn--secondary:hover {
+  background-image: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+  background-color: #687680;
+  color: #0369a1;
+  box-shadow: 0 4px 6px rgba(3, 105, 161, 0.1);
+  transform: translateY(-1px);
+}
+
+.btn--danger {
+  background-image: linear-gradient(to bottom, #ef4444);
+  background-color: #f37b7b;
+  color: #ffffff;
+  box-shadow:
+    0 2px 4px rgba(247, 156, 156, 0.308),
+    0 1px 2px rgba(233, 158, 158, 0.219);
+}
+
+.btn--danger:hover {
+  background-image: linear-gradient(to bottom, #f77474, #fa7878);
+  background-color: #fa7f7f;
+
+  box-shadow: 0 4px 8px rgba(250, 186, 186, 0.411);
+  transform: translateY(-1px);
+}
+
+.btn--danger:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.15);
+}

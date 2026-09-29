@@ -1,4 +1,5 @@
 import { useTransactions } from "../../hooks/useTransactions";
+import { Button } from "../common/Button";
 import { EmptyState } from "../common/EmptyState";
 import "../transactions/TransactionList.css";
 import { Trash2, Inbox, Pen, Plus, Minus } from "lucide-react";
@@ -20,11 +21,6 @@ export function TransactionList({
     );
   }
 
-  const handleDeleteClick = (id) => {
-    if (window.confirm("Delete this transaction")) {
-      onDeleteTransactions(id);
-    }
-  };
   return (
     <div className="transaction-list">
       {!compact && (
@@ -63,18 +59,18 @@ export function TransactionList({
 
               {!compact && (
                 <div className="transaction-item-actions">
-                  <button
+                  <Button
                     onClick={() => onEditClick(trans.id)}
                     className="transaction-item-btn edit"
                   >
                     <Pen size={14} />
-                  </button>
-                  <button
-                    onClick={() => handleDeleteClick(trans.id)}
+                  </Button>
+                  <Button
+                    onClick={() => onDeleteTransactions(trans.id)}
                     className="transaction-item-btn delete"
                   >
                     <Trash2 size={14} />
-                  </button>
+                  </Button>
                 </div>
               )}
             </li>
