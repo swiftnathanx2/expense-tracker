@@ -1,18 +1,30 @@
 .transaction-page-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 50px;
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
 }
+
+.transaction-page-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--color-text, #1f2937);
+}
+
+.transaction-page-filters {
+  width: 100%;
+  display: flex;
+}
+
 .transaction-page-form {
   background-color: #fff;
-
   border-radius: 10px;
+  width: 100%;
 }
+
 .transaction-page-list {
-  background-color: #ffff;
-  padding: 10px 20px;
-  border-radius: 15px;
-  margin: 10px;
+  width: 100%;
+  min-height: 250px;
 }
