@@ -60,6 +60,8 @@ Personal finance is something that most people struggle with and that is largely
 
 ## 🔗 Live Demo
 
+[Live Demo](https://expense-trackr-two.vercel.app/)
+
 ## ⚙️ Installation & Setup
 
 Clone the repository:
