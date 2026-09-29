@@ -1,0 +1,42 @@
+.transaction-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 8px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+  gap: 10px;
+}
+
+.transaction-row--header {
+  font-weight: 600;
+  border-bottom: 2px solid #d1d5db;
+}
+
+.expense {
+  color: #dc2626;
+}
+.income {
+  color: #059669;
+}
+
+.transaction-body ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.transaction-row--delete {
+  background-color: #ec5a5abe;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  color: #ffff;
+}
+
+.transaction-row--edit {
+  background-color: #4c1d95;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 8px;
+  color: #ffff;
+}

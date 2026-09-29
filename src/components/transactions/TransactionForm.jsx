@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultCategories from "../../data/categories";
+import "../transactions/TransactionForm.css";
 
 const initialValue = {
   type: "expense",
@@ -9,14 +10,35 @@ const initialValue = {
   note: "",
 };
 
-export function TransactionForm({ onAddTransaction }) {
+export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
   const [formState, setFormState] = useState(initialValue);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (initialData) {
+      setFormState(initialData);
+    } else {
+      setFormState(initialValue);
+    }
+  }, [initialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormState((prev) => ({ ...prev, [name]: value }));
+    setFormState((prev) => {
+      const updatedState = { ...prev, [name]: value };
+
+      if (name === "type") {
+        const firstValidCategory = defaultCategories.find(
+          (cat) => cat.type === value,
+        );
+        updatedState.categoryId = firstValidCategory
+          ? firstValidCategory.id
+          : "";
+      }
+
+      return updatedState;
+    });
   };
 
   const handleSubmit = (e) => {
@@ -34,68 +56,88 @@ export function TransactionForm({ onAddTransaction }) {
 
     setError("");
 
-    const newTransaction = {
-      id: crypto.randomUUID(),
-      ...formState,
-    };
-
-    onAddTransaction(newTransaction);
+    onSave(formState);
     setFormState(initialValue);
-    console.log(formState);
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-header">
-          <h3>Add Transactions</h3>
+          <h3>{isEditing ? "Edit Transaction" : "Add Transaction"}</h3>
           {error && <p className="form-error">{error}</p>}
         </div>
-        <div className="form-group">
-          <label htmlFor="amount">Amount</label>
-          <input
-            type="number"
-            name="amount"
-            min={0}
-            value={formState.amount}
-            onChange={handleChange}
-          />
-          <label htmlFor="type">Type</label>
-          <select name="type" value={formState.type} onChange={handleChange}>
-            <option value="expense">Expense</option>
-            <option value="income">Income</option>
-          </select>
 
-          <label htmlFor="category">Category</label>
-          <select
-            name="categoryId"
-            value={formState.categoryId}
-            onChange={handleChange}
-          >
-            {defaultCategories
-              .filter((cat) => cat.type === formState.type)
-              .map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-          </select>
-          <label htmlFor="date">Date</label>
-          <input
-            type="date"
-            name="date"
-            value={formState.date}
-            onChange={handleChange}
-          />
-          <label htmlFor="note">Note</label>
-          <textarea
-            name="note"
-            value={formState.note}
-            onChange={handleChange}
-            placeholder="type note"
-          ></textarea>
+        <div className="form-group">
+          <div className="form-field">
+            <label htmlFor="amount">Amount</label>
+            <input
+              type="number"
+              name="amount"
+              min={0}
+              value={formState.amount}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="type">Type</label>
+            <select name="type" value={formState.type} onChange={handleChange}>
+              <option value="expense">Expense</option>
+              <option value="income">Income</option>
+            </select>
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="categoryId">Category</label>
+            <select
+              name="categoryId"
+              value={formState.categoryId}
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Select Category
+              </option>
+              {defaultCategories
+                .filter((cat) => cat.type === formState.type)
+                .map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
+            </select>
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="date">Date</label>
+            <input
+              type="date"
+              name="date"
+              value={formState.date}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-field form-field--wide">
+            <label htmlFor="note">Note</label>
+            <textarea
+              name="note"
+              value={formState.note}
+              onChange={handleChange}
+              placeholder="type note"
+            ></textarea>
+          </div>
         </div>
-        <button type="submit">Add Transaction</button>
+        <div className="form-actions">
+          <button type="submit" className="form-submit">
+            {isEditing ? "Update Transaction" : "Add Transaction"}
+          </button>
+          {isEditing && (
+            <button type="button" onClick={onCancel} className="form-cancel">
+              Cancel
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

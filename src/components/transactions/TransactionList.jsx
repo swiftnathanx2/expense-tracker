@@ -1,0 +1,77 @@
+import defaultCategories from "../../data/categories";
+import { EmptyState } from "../common/EmptyState";
+import "../transactions/TransactionList.css";
+import { Trash2, Inbox, Pen } from "lucide-react";
+
+export function TransactionList({
+  transactions,
+  onDeleteTransactions,
+  onEditClick,
+}) {
+  if (transactions.length === 0) {
+    return (
+      <EmptyState
+        message={`No transactions yet. Create your first one`}
+        icon={Inbox}
+      />
+    );
+  }
+
+  const handleDeleteClick = (id) => {
+    if (window.confirm("Delete this transaction")) {
+      onDeleteTransactions(id);
+    }
+  };
+  return (
+    <div>
+      <div className="transaction-list">
+        <div className="transaction-row transaction-row--header">
+          <span>Amount</span>
+          <span>Type</span>
+          <span>Category</span>
+          <span>Date</span>
+          <span>Note</span>
+          <span>Delete</span>
+          <span>Edit</span>
+        </div>
+        <div className="transaction-body">
+          <ul>
+            {transactions.map((trans) => {
+              const category = defaultCategories.find(
+                (cat) => cat.id === trans.categoryId,
+              );
+              return (
+                <li key={trans.id} className="transaction-row">
+                  <span className={trans.type}>
+                    {trans.type === "expense" ? "-" : "+"}
+                    {trans.amount}
+                  </span>
+                  <span>{trans.type}</span>
+                  <span>{category?.name}</span>
+                  <span>{trans.date}</span>
+                  <span>{trans.note}</span>
+                  <span>
+                    <button
+                      onClick={() => handleDeleteClick(trans.id)}
+                      className="transaction-row--delete"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </span>
+                  <span>
+                    <button
+                      onClick={() => onEditClick(trans.id)}
+                      className="transaction-row--edit"
+                    >
+                      <Pen size={16} />
+                    </button>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
