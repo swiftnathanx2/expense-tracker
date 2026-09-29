@@ -4,7 +4,11 @@ import {
   ArrowLeftRight,
   PiggyBank,
   Settings,
+  Sun,
+  Moon,
 } from "lucide-react";
+
+import { useTheme } from "../hooks/useTheme";
 import "./MainLayout.css";
 
 const navItems = [
@@ -15,6 +19,7 @@ const navItems = [
 ];
 
 export function MainLayout() {
+  const { theme, toggleTheme } = useTheme();
   return (
     <div className="app-layout">
       <aside className="sidebar">
@@ -34,9 +39,15 @@ export function MainLayout() {
             </NavLink>
           ))}
         </nav>
+        <button onClick={toggleTheme} className="theme-toggle-btn">
+          {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          <span>{theme === "light" ? "Dark Mode" : "Light Mode"}</span>
+        </button>
       </aside>
       <main className="main-content">
-        <Outlet />
+        <div className="main-content--wrapper">
+          <Outlet />
+        </div>
       </main>
     </div>
   );

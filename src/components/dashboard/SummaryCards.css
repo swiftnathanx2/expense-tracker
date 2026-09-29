@@ -5,13 +5,14 @@
 }
 
 .summary-card {
-  background: #fff;
   border-radius: 16px;
   padding: 20px 22px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background-color: var(--color-sidebar-bg, #fff);
+  color: var(--color-active-text, #1f2937);
 }
 
 .summary-card--label {

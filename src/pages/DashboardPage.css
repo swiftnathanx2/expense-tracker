@@ -31,9 +31,16 @@
 }
 
 .dashboard-page--charts {
+  background: var(--color-sidebar-bg, #fff);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-page--charts {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   background: #fff;
   border-radius: 16px;
   padding: 20px 22px;
@@ -41,7 +48,8 @@
 }
 
 .dashboard-page--chart-placeholder {
-  background: #fff;
+  background: var(--color-sidebar-bg, #fff);
+
   border-radius: 16px;
   padding: 20px 22px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -54,7 +62,7 @@
 }
 
 .dashboard-page--recent {
-  background: #fff;
+  background: var(--color-sidebar-bg, #fff);
   border-radius: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   overflow: hidden;

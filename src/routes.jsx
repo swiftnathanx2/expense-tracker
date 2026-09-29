@@ -7,25 +7,28 @@ import { SettingsPage } from "./pages/SettingsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { TransactionsProvider } from "./context/TransactionsContext";
 import { BudgetsProvider } from "./context/BudgetsContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 export default function AppRoutes() {
   return (
     <div>
-      <TransactionsProvider>
-        <BudgetsProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<MainLayout />}>
-                <Route index element={<DashboardPage />} />
-                <Route path="/transactions" element={<TransactionsPage />} />
-                <Route path="/budgets" element={<BudgetsPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-              </Route>
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </BrowserRouter>
-        </BudgetsProvider>
-      </TransactionsProvider>
+      <ThemeProvider>
+        <TransactionsProvider>
+          <BudgetsProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<MainLayout />}>
+                  <Route index element={<DashboardPage />} />
+                  <Route path="/transactions" element={<TransactionsPage />} />
+                  <Route path="/budgets" element={<BudgetsPage />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                </Route>
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+            </BrowserRouter>
+          </BudgetsProvider>
+        </TransactionsProvider>
+      </ThemeProvider>
     </div>
   );
 }
