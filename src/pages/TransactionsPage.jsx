@@ -4,6 +4,7 @@ import { TransactionList } from "../components/transactions/TransactionList";
 import "../pages/TransactionsPage.css";
 import { useTransactions } from "../hooks/useTransactions";
 import { TransactionFilter } from "../components/transactions/TransactionFilter";
+import { useDebounce } from "../hooks/useDebounce";
 
 export function TransactionsPage() {
   const {
@@ -23,6 +24,8 @@ export function TransactionsPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const debouncedSearch = useDebounce(searchTerm, 400);
+
   const filteredTransactions = transactions.filter((t) => {
     const monthMatch = !selectedMonth || t.date.startsWith(selectedMonth);
 
@@ -31,7 +34,9 @@ export function TransactionsPage() {
     const catMatch =
       categoryFilter === "all" || t.categoryId === categoryFilter;
 
-    const searchMatch = t.note.toLowerCase().includes(searchTerm.toLowerCase());
+    const searchMatch = t.note
+      .toLowerCase()
+      .includes(debouncedSearch.toLowerCase());
 
     return monthMatch && typeMatch && catMatch && searchMatch;
   });
