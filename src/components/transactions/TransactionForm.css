@@ -1,7 +1,8 @@
 .form-container {
-  /* max-width: 700px; */
+  display: flex;
+  flex-direction: column;
   padding: 16px 60px;
-  /* border: 1px solid #e5e7eb; */
+
   border-radius: 10px;
 }
 
