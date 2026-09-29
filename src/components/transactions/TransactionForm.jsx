@@ -57,7 +57,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
 
     setError("");
 
-    onSave(formState);
+    onSave({ ...formState, amount: Number(formState.amount) });
     setFormState(initialValue);
   };
 

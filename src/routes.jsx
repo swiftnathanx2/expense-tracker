@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainLayout } from "./layouts/MainLayout";
 import { DashboardPage } from "./pages/DashboardPage";
 import { TransactionsPage } from "./pages/TransactionsPage";
-import { BudgetsPage } from "./pages/BudgetPage";
+import { BudgetsPage } from "./pages/BudgetsPage";
 import { SettingsPage } from "./pages/SettingsPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { TransactionsProvider } from "./context/TransactionsContext";
