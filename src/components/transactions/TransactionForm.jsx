@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import defaultCategories from "../../data/categories";
+
+import { useTransactions } from "../../hooks/useTransactions";
 import "../transactions/TransactionForm.css";
 
 const initialValue = {
@@ -13,6 +14,8 @@ const initialValue = {
 export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
   const [formState, setFormState] = useState(initialValue);
   const [error, setError] = useState("");
+
+  const { categories } = useTransactions();
 
   useEffect(() => {
     if (initialData) {
@@ -29,9 +32,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
       const updatedState = { ...prev, [name]: value };
 
       if (name === "type") {
-        const firstValidCategory = defaultCategories.find(
-          (cat) => cat.type === value,
-        );
+        const firstValidCategory = categories.find((cat) => cat.type === value);
         updatedState.categoryId = firstValidCategory
           ? firstValidCategory.id
           : "";
@@ -98,7 +99,7 @@ export function TransactionForm({ onSave, isEditing, onCancel, initialData }) {
               <option value="" disabled>
                 Select Category
               </option>
-              {defaultCategories
+              {categories
                 .filter((cat) => cat.type === formState.type)
                 .map((cat) => (
                   <option key={cat.id} value={cat.id}>
