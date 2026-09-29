@@ -2,12 +2,14 @@ import { useMemo } from "react";
 import { TransactionList } from "../components/transactions/TransactionList";
 import { useTransactions } from "../hooks/useTransactions";
 import { SummaryCards } from "../components/dashboard/SummaryCards";
+import { CategoryCharts } from "../components/dashboard/CategoryCharts";
+import { TrendChart } from "../components/dashboard/TrendChart";
 
 import { MonthSelector } from "../components/dashboard/MonthSelector";
 import "./DashboardPage.css";
 
 export function DashboardPage() {
-  const { transactions, selectedMonth } = useTransactions();
+  const { transactions = [], selectedMonth = "" } = useTransactions();
 
   const monthTransactions = useMemo(
     () => transactions.filter((t) => t.date.startsWith(selectedMonth)),
@@ -59,8 +61,8 @@ export function DashboardPage() {
 
       <div className="dashboard-page--main">
         <div className="dashboard-page--chart-placeholder">
-          {/* category chart and trend chart here in ticket 5.3 */}
-          <span>Charts coming soon</span>
+          <CategoryCharts transactions={monthTransactions} />
+          <TrendChart transactions={monthTransactions} />
         </div>
         <div className="dashboard-page--recent">
           <TransactionList transactions={recent} compact />
