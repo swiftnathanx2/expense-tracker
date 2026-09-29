@@ -1,4 +1,3 @@
-import { Icon, Inbox } from "lucide-react";
 import "../common/EmptyState.css";
 
 export function EmptyState({ message, icon: Icon, children }) {
