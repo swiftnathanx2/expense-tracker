@@ -1,5 +1,6 @@
 .category-form-container {
-  max-width: 700px;
+  /* width: 100%; */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 24px;
   background: var(--color-sidebar-bg, #ffffff);
@@ -22,7 +23,7 @@
 .category-form-field {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   min-width: 140px;
 }
 
@@ -35,6 +36,7 @@
 
 .category-form-field input,
 .category-form-field select {
+  /* width: 100%; */
   padding: 8px;
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 6px;

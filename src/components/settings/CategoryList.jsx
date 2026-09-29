@@ -10,6 +10,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { EmptyState } from "../common/EmptyState";
+import { Button } from "../common/Button";
 import "./CategoryList.css";
 
 const iconMap = {
@@ -66,12 +67,12 @@ export const CategoryList = () => {
                 {IconComponent && <IconComponent size={18} />}
               </span>
 
-              <button
+              <Button
                 onClick={() => handleDeleteClick(cat.id)}
                 className="category-item-delete"
               >
                 <Trash2 size={16} />
-              </button>
+              </Button>
             </li>
           );
         })}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTransactions } from "../../hooks/useTransactions";
 import { useBudgets } from "../../hooks/useBudgets";
+import { Button } from "../common/Button";
 import "./BudgetForm.css";
 
 export function BudgetsForm() {
@@ -69,10 +70,9 @@ export function BudgetsForm() {
           />
         </div>
       </div>
-
-      <button type="submit" className="budget-form-submit">
-        Set Budget
-      </button>
+      <div className="budget-form-btn-submit">
+        <Button type="submit">Set Budget</Button>
+      </div>
     </form>
   );
 }
