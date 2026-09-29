@@ -104,7 +104,31 @@
   border-radius: 50%;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 1024px) {
+  .transaction-item {
+    display: grid;
+    grid-template-columns: 10px minmax(160px, 2fr) 110px 100px auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+  }
+
+  .transaction-item-date {
+    text-align: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .transaction-list {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .transaction-item {
+    padding: 16px 28px;
+  }
+}
+@media (max-width: 1100px) {
   .transaction-item-main {
     min-width: 100%;
     order: 1;
@@ -123,5 +147,19 @@
   .transaction-item-actions {
     order: 4;
     margin-left: auto;
+  }
+}
+
+@media (min-width: 1100px) {
+  .transaction-item {
+    display: grid;
+    grid-template-columns: 10px minmax(160px, 2fr) 110px 100px auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+  }
+
+  .transaction-item-date {
+    text-align: left;
   }
 }
