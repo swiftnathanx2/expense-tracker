@@ -26,7 +26,7 @@ export function TrendChart({ transactions }) {
 
   if (data.length === 0) {
     return (
-      <EmptyState message="No expense data to chart yet." icon={TrendingUp} />
+      <EmptyState message="No trend data to chart yet." icon={TrendingUp} />
     );
   }
 
