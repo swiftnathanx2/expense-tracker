@@ -1,11 +1,12 @@
-import { Inbox } from "lucide-react";
+import { Icon, Inbox } from "lucide-react";
 import "../common/EmptyState.css";
 
-export function EmptyState({ message, icon }) {
+export function EmptyState({ message, icon: Icon, children }) {
   return (
     <div className="empty-state">
-      {icon && <Inbox size={32} className="empty-state--icon" />}
+      {Icon && <Icon size={32} className="empty-state--icon" />}
       <p>{message}</p>
+      {children}
     </div>
   );
 }

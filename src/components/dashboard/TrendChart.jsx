@@ -1,13 +1,15 @@
 import {
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { EmptyState } from "../common/EmptyState";
 import { TrendingUp } from "lucide-react";
+import { formatCurrency } from "../../utils/FormatCurrency";
 
 export function TrendChart({ transactions }) {
   const expenseTransactions = transactions.filter((t) => t.type === "expense");
@@ -30,12 +32,13 @@ export function TrendChart({ transactions }) {
 
   return (
     <ResponsiveContainer width="100%" height={280}>
-      <BarChart data={data}>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Bar dataKey="amount" fill="#4c1d95" />
-      </BarChart>
+        <YAxis tickFormatter={(value) => formatCurrency(value)} />
+        <Tooltip formatter={(value) => formatCurrency(value)} />
+        <Line dataKey="amount" fill="#4c1d95" />
+      </LineChart>
     </ResponsiveContainer>
   );
 }

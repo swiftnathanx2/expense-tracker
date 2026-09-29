@@ -89,3 +89,20 @@
     min-width: 0;
   }
 }
+
+@media (min-width: 1300px) {
+  .dashboard-page--main {
+    grid-template-columns: minmax(0, 1.6fr) minmax(420px, 1fr);
+  }
+}
+
+@media (min-width: 1700px) {
+  .dashboard-page--chart-placeholder {
+    flex-direction: row;
+  }
+
+  .dashboard-page--chart-placeholder > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
