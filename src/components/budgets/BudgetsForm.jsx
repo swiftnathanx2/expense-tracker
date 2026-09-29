@@ -3,7 +3,7 @@ import { useTransactions } from "../../hooks/useTransactions";
 import { useBudgets } from "../../hooks/useBudgets";
 import "./BudgetForm.css";
 
-export function BudgetForm() {
+export function BudgetsForm() {
   const { categories, selectedMonth } = useTransactions();
   const { addBudget } = useBudgets();
 

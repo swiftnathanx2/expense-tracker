@@ -9,7 +9,7 @@ export function MonthSelector() {
       <input
         type="month"
         value={selectedMonth}
-        onChange={(e) => selectedMonth(e.target.value)}
+        onChange={(e) => setSelectedMonth(e.target.value)}
         className="month-selector"
       />
     </div>

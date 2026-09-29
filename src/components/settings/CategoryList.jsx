@@ -10,7 +10,7 @@ import {
   Briefcase,
 } from "lucide-react";
 import { EmptyState } from "../common/EmptyState";
-import "../settings/CategoryList.css";
+import "./CategoryList.css";
 
 const iconMap = {
   Tag,
@@ -20,6 +20,7 @@ const iconMap = {
   Coffee,
   Briefcase,
 };
+
 export const CategoryList = () => {
   const { customCategories, deleteCustomCategory } = useTransactions();
 
@@ -32,7 +33,7 @@ export const CategoryList = () => {
   if (customCategories.length === 0) {
     return (
       <EmptyState
-        message={"No custome categories yet. Create your first one!"}
+        message={"No custom categories yet. Create your first one!"}
         icon={InboxIcon}
       />
     );
@@ -43,48 +44,38 @@ export const CategoryList = () => {
       <div className="custom-category--header">
         <h3>Recent Categories</h3>
       </div>
-      <div className="custom-category--list">
-        <div className="custom-category--row-header">
-          <span>Color</span>
-          <span>Name</span>
-          <span>Type</span>
-          <span>Icon</span>
-          <span>Delete</span>
-        </div>
 
-        <div className="custom-category--content">
-          <ul className="custom-category--list">
-            {customCategories.map((cat) => {
-              const IconComponent = iconMap[cat.icon];
-              return (
-                <li key={cat.id} className="custom-category--list-item">
-                  <span
-                    className="custom-category--swatch"
-                    style={{ backgroundColor: cat.color }}
-                  ></span>
-                  <span className="custom-category--name">{cat.name}</span>
-                  <span className="custom-category--name">{cat.type}</span>
-                  <span
-                    className={
-                      cat.type === "income"
-                        ? "custom-category--icon-income"
-                        : "custom-category--icon-expense"
-                    }
-                  >
-                    {IconComponent && <IconComponent size={20} />}
-                  </span>
-                  <button
-                    onClick={() => handleDeleteClick(cat.id)}
-                    className="custom-category--delete-btn"
-                  >
-                    <Trash2 size={16} />
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+      <ul className="category-list-items">
+        {customCategories.map((cat) => {
+          const IconComponent = iconMap[cat.icon];
+          return (
+            <li key={cat.id} className="category-item">
+              <span
+                className="category-item-dot"
+                style={{ backgroundColor: cat.color }}
+              ></span>
+
+              <div className="category-item-main">
+                <span className="category-item-name">{cat.name}</span>
+                <span className={`category-item-type ${cat.type}`}>
+                  {cat.type}
+                </span>
+              </div>
+
+              <span className="category-item-icon">
+                {IconComponent && <IconComponent size={18} />}
+              </span>
+
+              <button
+                onClick={() => handleDeleteClick(cat.id)}
+                className="category-item-delete"
+              >
+                <Trash2 size={16} />
+              </button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
