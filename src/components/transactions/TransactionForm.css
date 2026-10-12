@@ -1,0 +1,64 @@
+.trans-form-container {
+  width: 100%;
+}
+
+.trans-form-header {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.trans-form-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+.trans-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trans-form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.trans-form-field--wide {
+  width: 100%;
+}
+
+.trans-form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--color-active-text, #1f2937);
+}
+
+.trans-form-field input,
+.trans-form-field select,
+.trans-form-field textarea {
+  padding: 8px;
+  border: 1px solid var(--color-border, #d1d5db);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: var(--color-sidebar-bg, #ffffff);
+  color: var(--color-active-text, #1f2937);
+}
+.trans-form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .trans-form-actions {
+    flex-direction: column-reverse;
+  }
+  .trans-form-submit,
+  .trans-form-cancel {
+    width: 100%;
+    text-align: center;
+  }
+}

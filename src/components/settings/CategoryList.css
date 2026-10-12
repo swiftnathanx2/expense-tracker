@@ -1,0 +1,82 @@
+.custom-category-container {
+  margin: 24px 0;
+}
+
+.custom-category--header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.category-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--color-sidebar-bg, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.category-item-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.category-item-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.category-item-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.category-item-type {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.category-item-type.income {
+  color: #059669;
+}
+
+.category-item-type.expense {
+  color: #dc2626;
+}
+
+.category-item-icon {
+  color: var(--color-text-muted, #6b7280);
+  display: flex;
+  align-items: center;
+}
+
+.category-item-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #f87171;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-item-delete:hover {
+  background: #ffe9e9bb;
+  border-radius: 50%;
+  color: #dc2626;
+}

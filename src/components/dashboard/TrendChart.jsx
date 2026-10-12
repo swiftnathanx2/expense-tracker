@@ -1,0 +1,44 @@
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import { EmptyState } from "../common/EmptyState";
+import { TrendingUp } from "lucide-react";
+import { formatCurrency } from "../../utils/FormatCurrency";
+
+export function TrendChart({ transactions }) {
+  const expenseTransactions = transactions.filter((t) => t.type === "expense");
+
+  const totals = expenseTransactions.reduce((acc, t) => {
+    const day = t.date.slice(-2);
+    acc[day] = (acc[day] || 0) + t.amount;
+    return acc;
+  }, {});
+
+  const data = Object.keys(totals)
+    .sort()
+    .map((day) => ({ day, amount: totals[day] }));
+
+  if (data.length === 0) {
+    return (
+      <EmptyState message="No trend data to chart yet." icon={TrendingUp} />
+    );
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={280}>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="day" />
+        <YAxis tickFormatter={(value) => formatCurrency(value)} />
+        <Tooltip formatter={(value) => formatCurrency(value)} />
+        <Line dataKey="amount" fill="#4c1d95" />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+}

@@ -1,0 +1,61 @@
+.budgets-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  background: var(--color-bg, #f3f4f6);
+}
+
+.budgets-page-header {
+  width: 100%;
+  max-width: 600px;
+}
+
+.budgets-page-header h3 {
+  margin: 5px;
+  font-size: 1.1 rem;
+  color: var(--color-active-text, #1f2937);
+}
+
+.budgets-page-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.budgets-page-form,
+.budgets-page-list {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .budgets-page-header,
+  .budgets-page-main {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 768px) {
+  .budgets-page-header,
+  .budgets-page-main {
+    max-width: 800px;
+  }
+
+  .budgets-page-main {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .budgets-page-header,
+  .budgets-page-main {
+    max-width: 1000px;
+  }
+
+  .budgets-page-header h3 {
+    font-size: 1.1rem;
+  }
+}
